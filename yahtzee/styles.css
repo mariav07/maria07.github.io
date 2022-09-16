@@ -14,13 +14,13 @@
 
 body{
   background:#ffffff;
-  font-family:sans-serif;
+  font-family: times 'Times New Roman', Times, serif
   background-image: url('https://images.pexels.com/photos/172277/pexels-photo-172277.jpeg?auto=compress');
   background-size: cover;
 }
 
 .container{
-  background:#fff4e0;
+  background:#ebebeb;
   border:1px solid #999999;
   padding:20px;
   max-width:900px;
@@ -49,8 +49,9 @@ h1{
 }
 
 #rollButton{
-  background:#C83E3E;
-  color:#ffffff;
+ font-family: times 'Times New Roman', Times,  serif;
+  background:#ffffff;
+  color:#008cb4;
   border:0px;
   display:block;
   width:100%;
@@ -60,7 +61,8 @@ h1{
 }
 
 #rollButton:hover{
-  background:#AF3333;
+  background:#008cb4;
+  color:#ffffff;
   cursor:pointer;
 }
 
@@ -98,7 +100,7 @@ h1{
 }
 
 #grandTotalRow{
-  background:#C83E3E;
+  background:#008cb4;
   color:#ffffff;
 }
 

@@ -1,6 +1,7 @@
   body{
-  padding:20px;
-  font-family:sans-serif;
+  background: #ebebeb;
+    padding:20px;
+  font-family:Times 'Times New Roman', Times, serif;
 }
 #pageTitle{
   text-align:center;
@@ -10,16 +11,18 @@
   max-width:700px;
 }
 #links > a{
+  background: #ffffff;
+  font-family: times 'Times New Roman', Times, serif;
   display:block;
   text-align:center;
   border:1px solid #333;
   padding:10px;
   text-decoration:none;
-  color:#94e3fe;
+  color:#008cb4;
 }
 
 #links > a:hover{
-  background:#94e3fe;
+  background:#008cb4;
   color:#ffffff;
 }
 }
