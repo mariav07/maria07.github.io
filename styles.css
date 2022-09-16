@@ -1,0 +1,25 @@
+  body{
+  padding:20px;
+  font-family:sans-serif;
+}
+#pageTitle{
+  text-align:center;
+}
+#links{
+  margin:40px auto;
+  max-width:700px;
+}
+#links > a{
+  display:block;
+  text-align:center;
+  border:1px solid #333;
+  padding:10px;
+  text-decoration:none;
+  color:#94e3fe;
+}
+
+#links > a:hover{
+  background:#94e3fe;
+  color:#ffffff;
+}
+}
