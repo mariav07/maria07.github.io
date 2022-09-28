@@ -1,0 +1,47 @@
+body{
+  background: #ebebeb;
+  padding:20px;
+  font-family:Times 'Times New Roman', Times, serif;
+}
+
+#pageTitle{
+  text-align: center;
+  color: #b51a00ff;
+}
+
+#scrambledWord{
+  text-align: left;
+  font-family:Times 'Times New Roman', Times, serif;
+  text-decoration: none;
+  color: #b51a00;
+}
+
+/*#unscrambled{
+ text-align: left;
+ font-family:Times 'Times New Roman', Times, serif;
+ text-decoration: none;
+ color: #b51a00;
+}*/
+
+button{
+  background: #ffff;
+  border: none;
+  text-decoration: none;
+  color: #b51a00ff;
+}
+
+button:hover{
+  background: #b51a00ff;
+  border: none;
+  text-decoration: none;
+  color: #ffff;
+}
+
+input{
+  width: 75%;
+  height: 5%;
+  padding: 12px 5px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  
+}
