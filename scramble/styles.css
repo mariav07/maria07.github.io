@@ -16,13 +16,6 @@ body{
   color: #b51a00;
 }
 
-/*#unscrambled{
- text-align: left;
- font-family:Times 'Times New Roman', Times, serif;
- text-decoration: none;
- color: #b51a00;
-}*/
-
 button{
   background: #ffff;
   border: none;
@@ -35,6 +28,12 @@ button:hover{
   border: none;
   text-decoration: none;
   color: #ffff;
+}
+
+p{
+  font-family: Times 'Times New Roman', Times, serif;
+  text-decoration: none;
+  color: #b51a00ff;
 }
 
 input{

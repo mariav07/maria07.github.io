@@ -33,7 +33,7 @@ const allWords = ["Costumes", "Monster", "Disguise", "Ghost", "Witch", "Pumpkin"
 //Select a random word from the "words" array and assign it to a variable called "selectedWord";
 let randomIndex = Math.floor(Math.random() * (allWords.length - 1));
 let selectedWord = allWords[randomIndex].toLowerCase();
-let unScrambled = []
+let list = [];
 
 // This is a placeholder. You will need to move code into this funcation as part of the assignment.
 function nextWord() {
@@ -51,16 +51,18 @@ function nextWord() {
 function check() {
   if (selectedWord === document.getElementById("myWord").value.toLowerCase().trim()) {
     alert("Correct!");
-unScrambled.push(selectedWord)
-document.getElementById("unscrambled").innerHTML = unScrambled
-}
+    list.push(" " + selectedWord)
+    document.getElementById("unscrambled").innerHTML = list;
+  }
   nextWord();
 }
+
 
 //A function that gets called when the user clicks on the Give Up button.
 function giveUp() {
   document.getElementById("myWord").value = selectedWord;
   nextWord();
 }
+
 
 nextWord();
