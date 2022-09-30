@@ -21,7 +21,7 @@
       - Call the function nextWord() when the page loads. To do this, uncomment the nextWord() function call at the bottom of this script. 
       - We also want another word called when the user successfully unscrambles a word.  So call the nextWord() function in the code where you think it checks if the users answer is correct. 
 
-  TODO 5: Now that we dont have to reload the page to get a new word, we can actually build a game
+  TODONE 5: Now that we dont have to reload the page to get a new word, we can actually build a game
     - We need to keep track of successfully unscrambled words.  There's a DIV in the HTML called "unscrambled", we need to populate it with the words when they are unscrambled
     - It would be nice if there was a numeric score displayed
     - The UI is BORING! It needs styling and images 
@@ -34,6 +34,7 @@ const allWords = ["Costumes", "Monster", "Disguise", "Ghost", "Witch", "Pumpkin"
 let randomIndex = Math.floor(Math.random() * (allWords.length - 1));
 let selectedWord = allWords[randomIndex].toLowerCase();
 let list = [];
+let number = 0;
 
 // This is a placeholder. You will need to move code into this funcation as part of the assignment.
 function nextWord() {
@@ -53,6 +54,8 @@ function check() {
     alert("Correct!");
     list.push(" " + selectedWord)
     document.getElementById("unscrambled").innerHTML = list;
+    number = (list.length);
+    document.getElementById("unscrambledNumber").innerHTML = number;
   }
   nextWord();
 }
@@ -66,3 +69,4 @@ function giveUp() {
 
 
 nextWord();
+
