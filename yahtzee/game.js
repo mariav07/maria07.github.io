@@ -5,7 +5,7 @@ let rolledDice=[0,0,0,0,0];
   ROLL
   The ROLL function is called when the "roll"
   button is pressed. It should do the following:
-   - Update any NON-SELECTED dice
+   - DONE: Update any NON-SELECTED dice
    - DONE: Only allow <=3 rolls per turn
 ******************************************/
 timesRolled = 1
@@ -33,7 +33,7 @@ function rollDice(){
 /*****************************************
   UPDATE DICE
   This function should:
-   - update the image to the corrisponding dice value
+   - DONE: update the image to the corrisponding dice value
    for any NON-SELECTED die
 ******************************************/
 function updateDice() {
