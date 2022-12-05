@@ -1,5 +1,6 @@
-let heldDice=[0,0,0,0,0];
-let rolledDice=[0,0,0,0,0];
+let rolledDice = [0, 0, 0, 0, 0];
+let timesRolled = 0;
+let gameScore = 0;
 
 /*****************************************
   ROLL
@@ -8,11 +9,10 @@ let rolledDice=[0,0,0,0,0];
    - DONE: Update any NON-SELECTED dice
    - DONE: Only allow <=3 rolls per turn
 ******************************************/
-timesRolled = 1
 function roll() {
-  if(timesRolled <= 3){
+  if (timesRolled < 3) {
     updateDice();
-    timesRolled = timesRolled + 1
+    timesRolled++;
   }
 }
 
@@ -22,7 +22,7 @@ function roll() {
   This function will actually roll the dice 
   by generating 5 random numbers each between 1-6
 ******************************************/
-function rollDice(){
+function rollDice() {
   let output = [];
   for (i = 0; i < 5; i++) {
     output.push(Math.floor(Math.random() * (6)) + 1);
@@ -38,11 +38,11 @@ function rollDice(){
 ******************************************/
 function updateDice() {
   rolledDice = rollDice();
-    for(let i = 0; i < rolledDice.length; i++) {
-      let source = document.getElementById("die"+i+"Image").src;
-      if(source.includes("dieWhite")){
-document.getElementById("die"+i+"Image").src="/yahtzee/img/dice/dieWhite_border"+rolledDice[i]+".png"; 
-  }
+  for (let i = 0; i < rolledDice.length; i++) {
+    let source = document.getElementById("die" + i + "Image").src;
+    if (source.includes("dieWhite")) {
+      document.getElementById("die" + i + "Image").src = "/yahtzee/img/dice/dieWhite_border" + rolledDice[i] + ".png";
+    }
   }
 }
 
@@ -53,11 +53,72 @@ document.getElementById("die"+i+"Image").src="/yahtzee/img/dice/dieWhite_border"
     - DONE: Turn the die clicked to RED (selected) if it is currently WHITE (not selected)
     - DONE: Turn the die clicked to WHITE (not selected) if it is currently RED (selected) 
 *****************************************/
-function toggleHold (diceSelect){
- let source = document.getElementById("die"+diceSelect+"Image").src;
-   if(source.includes("dieWhite")){
-    document.getElementById("die"+diceSelect+"Image").src = document.getElementById("die"+diceSelect+"Image").src.replace("dieWhite", "dieRed");
-   } else{
-     document.getElementById("die"+diceSelect+"Image").src = document.getElementById("die"+diceSelect+"Image").src.replace("dieRed", "dieWhite");
+function toggleHold(diceSelect) {
+  let source = document.getElementById("die" + diceSelect + "Image").src;
+  if (source.includes("dieWhite")) {
+    document.getElementById("die" + diceSelect + "Image").src = document.getElementById("die" + diceSelect + "Image").src.replace("dieWhite", "dieRed");
+  } else {
+    document.getElementById("die" + diceSelect + "Image").src = document.getElementById("die" + diceSelect + "Image").src.replace("dieRed", "dieWhite");
   }
+}
+
+/***************************************** 
+  ASSIGN
+*****************************************/
+function assign(selectedNumber) {
+  let countOfValidDice=0;
+  let scoreForThisRound=0;
+  
+  
+  for(let heldDieSrc of getHeldDice()){
+    if(selectedNumber === getDieValue(heldDieSrc)){
+      countOfValidDice++;
+    }
+  }
+
+  scoreForThisRound = selectedNumber*countOfValidDice;
+  document.getElementById(selectedNumber+"Count").innerHTML= countOfValidDice;
+  document.getElementById(selectedNumber+"Score").innerHTML=scoreForThisRound;
+  gameScore+=scoreForThisRound;
+  document.getElementById("totalScore").innerHTML=gameScore;
+
+  
+  /*------------------------------------------------------------------------------------
+  CLASS 8 HOMEWORK
+    Add functionality to reset the game after the numbers have been assigned so that the user can roll another round.
+      
+      1. Reset the dice to be blank and white
+        ***HINT*** -- Look at the for loop in the getHeldDice function for how I selected all the die images, can you use something similar to reset all the die?
+        The src value of a reset die would be "/yahtzee/img/dice/dieWhite_border0.png"
+  
+      2.  Reset the timesRolled variable to 0;
+  ------------------------------------------------------------------------------------*/
+
+  for(i = 0; i <= 6; i++){
+    document.getElementById("die" + i + "Image").src = "/yahtzee/img/dice/dieWhite_border0.png";
+  }
+
+ timesRolled = 0;
+  
+}
+
+/******************************************
+GET HELD DICE
+******************************************/
+function getHeldDice(){
+  let heldDice=[];
+  for(let die of document.querySelectorAll(".die > img")){
+    if(die.src.includes("Red")){
+      heldDice.push(die.src);
+    }
+  }
+  return heldDice;
+}
+
+
+/******************************************
+GET DIE VALUE
+******************************************/
+function getDieValue(imageSource){
+  return Number(imageSource.replace(/[^0-9]/ig,""));
 }
