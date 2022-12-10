@@ -1,6 +1,7 @@
 let rolledDice = [0, 0, 0, 0, 0];
 let timesRolled = 0;
 let gameScore = 0;
+let availableAssingments = 6;
 
 /*****************************************
   ROLL
@@ -82,23 +83,13 @@ function assign(selectedNumber) {
   gameScore+=scoreForThisRound;
   document.getElementById("totalScore").innerHTML=gameScore;
 
-  
-  /*------------------------------------------------------------------------------------
-  CLASS 8 HOMEWORK
-    Add functionality to reset the game after the numbers have been assigned so that the user can roll another round.
-      
-      1. Reset the dice to be blank and white
-        ***HINT*** -- Look at the for loop in the getHeldDice function for how I selected all the die images, can you use something similar to reset all the die?
-        The src value of a reset die would be "/yahtzee/img/dice/dieWhite_border0.png"
-  
-      2.  Reset the timesRolled variable to 0;
-  ------------------------------------------------------------------------------------*/
-
-  for(i = 0; i <= 6; i++){
-    document.getElementById("die" + i + "Image").src = "/yahtzee/img/dice/dieWhite_border0.png";
+  availableAssingments = availableAssingments - 1;
+  if(availableAssingments === 0){
+    setTimeout(gameOver, 500);
+  } else{
+    resetRoll();
+    timesRolled = 0;
   }
-
- timesRolled = 0;
   
 }
 
@@ -120,5 +111,49 @@ function getHeldDice(){
 GET DIE VALUE
 ******************************************/
 function getDieValue(imageSource){
-  return Number(imageSource.replace(/[^0-9]/ig,""));
+  return Number(imageSource.split("/img/")[1].replace(/[^0-9]/ig, ""));
+}
+
+/*****************************************
+RESET ROLL
+******************************************/
+function resetRoll(){
+   for(i = 0; i < 5; i++){
+    document.getElementById("die" + i + "Image").src = "/yahtzee/img/dice/dieWhite_border0.png";
+  }
+}
+
+
+  /*************************************************
+  GAME OVER
+    1. Display an alert to user with some message
+    2. Reset the fame by calling the newGame function
+  ***************************************************/
+function gameOver(){
+  alert("Game Over! Great job. You got " + gameScore + " points!");
+  newGame();
+}
+
+/************************************************
+NEW GAME
+  - Reset gameScore to 0
+  - Reset timesRolled to 0
+  - Reset dice images
+  - Reset the UI for each score group
+************************************************/
+function newGame(){
+  availableAssingments = 6
+  gameScore = 0;
+  document.getElementById("totalScore").innerHTML=gameScore;
+  timesRolled = 0;
+  resetRoll();
+  
+  for(i = 1; i<=6; i++){
+    document.getElementById(i+"Count").innerHTML = '<button onclick="assign('+i+ ')">Assign</button';
+  }
+
+  for(i = 1; i<=6; i++){
+    document.getElementById(i+"Score").innerHTML = 0;
+  }
+    
 }
